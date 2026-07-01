@@ -1,0 +1,78 @@
+---
+title: "Search Electronic Components in Via BOM"
+sidebarTitle: "Search"
+description: "Use part numbers, specs, and natural language to find components in Via BOM, then refine results with filters, context, and ranking preferences."
+---
+
+Via BOM search is designed to handle the way engineers actually search — partial part numbers, package sizes, spec fragments, and plain-language intent all work in a single query box. You don't need to know the exact part number or pick a category first; just describe what you need and Via interprets both structured clues and free text at the same time.
+
+## Example Queries
+
+The following queries all work out of the box:
+
+```text
+100nF 0402 capacitor
+INA228 current sensor
+low-noise LDO 3.3V
+rs485 transceiver 3.3v
+1% 10k 0402 resistor
+```
+
+Via interprets structured clues (values, packages, part numbers) and free-text intent simultaneously, so mixing both styles in a single query is fine.
+
+## What Search Understands
+
+Via search handles a broad range of input styles, including:
+
+- **Part numbers and family names** — full or partial, exact or approximate
+- **Common package sizes** — 0402, SOT-23, SOIC-8, and similar designators
+- **Typical spec and value patterns** — voltage, resistance, capacitance, tolerance, and more
+- **Natural-language component descriptions** — plain phrases like "low-noise LDO" or "rs485 transceiver"
+- **Manufacturer names** — when included as part of the query
+
+## Filters and Ranking
+
+Search results can be shaped with a combination of refinements:
+
+- **Category cues** — steer results toward a component family without locking the query to a single category
+- **Manufacturer filters** — limit results to specific manufacturers or exclude those you don't use
+- **Parameter filters** — narrow by voltage, current, resistance, frequency, or other technical parameters
+- **Package cues** — constrain results to a specific footprint or package style
+- **Ranking preferences** — push results toward cost, availability, lifecycle status, or other priorities your team has encoded
+
+You can search broadly first and then narrow the results, or start with a more constrained query immediately — either approach works.
+
+<Tip>
+Read the full result list, not just the top row. Check the part number, manufacturer, and key columns before committing to a candidate. Top-ranked does not always mean "correct enough to use" — treat the list as a shortlist generator, then confirm on the part details view.
+</Tip>
+
+## Search Context
+
+Search behaves differently depending on where you launch it from. The active context shapes how Via ranks and filters results, which means the same query can return subtly different results in different parts of the app.
+
+<Tabs>
+  <Tab title="Inside a Project">
+    When you search from within a project, Via can use your active BOM and ruleset as context. This helps it preserve design continuity — favouring parts that are consistent with components already in your design and preferences your team has already established.
+  </Tab>
+  <Tab title="Inside a Library">
+    When you search from within a library, Via biases toward parts already saved in that library or toward nearby trusted families and manufacturers. This is useful for confirming whether a candidate already exists before adding a new entry.
+  </Tab>
+  <Tab title="With an Active Ruleset">
+    When a ruleset is active, ranking is pushed toward the priorities your team encoded — cost, stock, lifecycle, qualification status, or other preferences. The same query run without a ruleset may rank results differently.
+  </Tab>
+</Tabs>
+
+## When Results Look Wrong
+
+If the results don't match what you expected, work through these steps in order:
+
+1. **Simplify the query** to the part family or most important single requirement
+2. **Remove extra adjectives** and restate the core value or package as plainly as possible
+3. **Search from outside the current project or library** if the context feels too restrictive — the active BOM or library bias may be narrowing results more than you want
+4. **Open quick look on a near miss** and use series navigation to find a neighboring variant before starting the search over from scratch
+
+If the result set is obviously wrong, report the query and what you expected — that feedback directly improves search quality.
+
+<Note>
+Search is already useful across a wide range of categories, but quality is still improving in some areas. Some categories are better covered than others, missing source data can hurt ranking, and the right answer may appear lower in the list than it should. When accuracy matters, confirm the final candidate on the part details view and cross-check against the linked datasheet before committing it to your BOM.
+</Note>

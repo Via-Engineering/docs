@@ -1,20 +1,38 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: "Via BOM Docs"
+description: "Learn how to search electronic components, manage BOMs, and integrate Via BOM into your PCB design workflow."
 ---
 
-Write a short description of your product here. What it does, who it's for, and what they can accomplish with it.
+Via BOM is an AI-powered component search and BOM management platform built for hardware engineers. It reads datasheets end-to-end, answers natural language queries, and carries your project context, design rules, and preferred parts into every search — so you can go from requirement to BOM entry without leaving your workflow.
 
-<Tip>
-  Ready to make this your own? Start by editing this page. Update your `docs.json` file to customize your site. Then fill out the [Quickstart](/quickstart) page.
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Learn what Via BOM is, how it works, and who it's built for.
+  </Card>
+  <Card title="Getting Started" icon="rocket" href="/getting-started">
+    Sign in, pick a workspace, run your first search, and create your first project.
+  </Card>
+  <Card title="MCP Integration" icon="plug" href="/mcp">
+    Connect Via BOM to Claude, ChatGPT, and Gemini via the Model Context Protocol.
+  </Card>
+  <Card title="Search" icon="magnifying-glass" href="/search">
+    Learn how natural language queries, filters, and AI ranking work in the app.
+  </Card>
+</CardGroup>
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  This card links to the quickstart page in your project.
-</Card>
-<Card title="Components" icon="puzzle-piece" href="https://mintlify.com/docs/components">
-  Add cards, callouts, steps, tabs, and more to design and structure your pages.
-</Card>
-<Card title="Settings" icon="gear" href="https://mintlify.com/docs/organize/settings">
-  Set your site name, branding, and navigation in the `docs.json` file.
-</Card>
+## Get Up and Running
+
+<Steps>
+  <Step title="Sign in">
+    Create your Via BOM account or sign in at the app home page. Via loads your account data and available workspaces automatically after login.
+  </Step>
+  <Step title="Pick your workspace">
+    Use the workspace switcher in the left sidebar to select your organization's workspace. Your active workspace controls which shared projects, libraries, and rulesets are visible to you.
+  </Step>
+  <Step title="Run your first search">
+    Type a part number, spec, or plain-language requirement — such as `low noise 3.3V LDO` or `100nF 0402 capacitor` — into the search bar. Via returns a ranked shortlist with AI-generated tradeoff explanations for each candidate.
+  </Step>
+  <Step title="Create a project and build your BOM">
+    From the home screen, click **Create Project** to start organizing your selected parts. Add components directly from search results, import an existing BOM file, and export when you're ready to hand off.
+  </Step>
+</Steps>

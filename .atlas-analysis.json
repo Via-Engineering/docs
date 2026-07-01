@@ -1,0 +1,77 @@
+{
+  "projectType": "saas",
+  "projectName": "Via BOM",
+  "projectDescription": "An AI-powered electronic component search and BOM management platform that reads datasheets end-to-end to help hardware engineers find, compare, and organize parts for PCB design.",
+  "theme": "luma",
+  "primaryColor": "#a4a4a4",
+  "lightColor": "#bcbcbc",
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "getting-started"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "search",
+              "part-details",
+              "projects-and-boms",
+              "libraries",
+              "rulesets",
+              "workspaces"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "mcp"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "shortcuts-and-feedback",
+              "changelog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Natural language component search across part numbers, specs, and plain English",
+    "Deep datasheet extraction of structured specs and parameters",
+    "AI-ranked shortlists with tradeoff explanations",
+    "Context-aware search using active BOM, library, and ruleset",
+    "Projects, revisions, and BOMs for full design lifecycle management",
+    "BOM import from CSV, XLSX, JSON, and YAML",
+    "Libraries for preferred/approved part sets with search bias",
+    "Rulesets to encode supply-chain, lifecycle, cost, and qualification policy",
+    "MCP integration with Claude, ChatGPT, and Gemini",
+    "Quick look with keyboard-driven inspection workflow",
+    "Design calculators derived from datasheet data",
+    "Series navigation for exploring part families and variants",
+    "Distributor stock and pricing snapshots",
+    "Workspace-level sharing for teams and organizations"
+  ],
+  "publicApiSurface": [
+    "MCP endpoint: https://api.viabom.com/mcp",
+    "MCP tool: search components with project/BOM/library/ruleset context",
+    "MCP tool: open component details (specs, datasheet metadata, distributor pricing)",
+    "MCP tool: read and edit projects and BOMs",
+    "MCP tool: read and edit libraries",
+    "MCP tool: read and edit rulesets and named config variants",
+    "OAuth sign-in via WorkOS AuthKit",
+    "Claude connector setup (custom connector UI or claude mcp add --transport http)",
+    "ChatGPT app setup (Developer mode, Create app)",
+    "Gemini CLI setup (gemini mcp add --transport http)"
+  ]
+}

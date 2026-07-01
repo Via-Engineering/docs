@@ -1,0 +1,100 @@
+---
+title: "Inspect Part Details and Datasheets in Via BOM"
+sidebarTitle: "Part Details"
+description: "Use quick look and full part details to verify extracted specs, datasheets, series variants, and distributor context before adding a component to your BOM."
+---
+
+Before committing a component to your BOM, Via BOM's part details view lets you verify that a search result is accurate, relevant, and safe to use — from extracted specs and datasheets to distributor pricing and design calculators. Spending a few seconds here before adding a part can prevent downstream design and sourcing problems.
+
+## What to Check First
+
+Start with the basics before reading further down the page:
+
+- **Manufacturer part number** — confirm this is the part you intended to find, not a similar-sounding variant
+- **Short summary or UI name** — a quick sanity check that the part identity is reasonable
+- **Extracted specifications** — scan for the values that matter most to your design decision
+- **Linked datasheet** — verify that a datasheet is present and points to the right document
+- **Package and category context** — confirm the footprint and component category match your requirements
+
+<Warning>
+If the part identity, key specs, or datasheet link do not match what you expect, stop and report the issue rather than trusting the rest of the result. A mismatch at this level means the entire record may be unreliable.
+</Warning>
+
+## Quick Look
+
+Quick look is the fast inspection path when you don't want to fully leave your result list. It lets you verify a candidate without losing your place in the search.
+
+Use quick look to:
+
+- Scan the most important specs at a glance
+- Open the linked datasheet directly
+- Jump through adjacent results to compare candidates side by side
+- Evaluate a likely match before adding it to a project
+
+For keyboard-heavy workflows, Via exposes quick look shortcuts so you can move through results and inspect parts without constantly switching back to the mouse. See [Shortcuts and Feedback](/shortcuts-and-feedback) for the full list.
+
+## Extracted Specs
+
+Via pulls structured values from datasheets so you can compare parts without reading every PDF from scratch. Extracted specs appear alongside the part record and are available for filtering and comparison across search results.
+
+Treat extracted values as useful decision support, not a definitive source of truth:
+
+<Note>
+Some specs may still be missing from the extracted record. Units may occasionally need correction. Condition-specific values — such as those that apply only at a particular temperature or load — can sometimes be flattened too aggressively. When a spec value matters to a design decision, cross-check it against the linked datasheet before relying on it.
+</Note>
+
+## Datasheets
+
+The part view links directly to the source datasheet when one is available. The datasheet is your authoritative reference — use it to verify anything that extracted specs cannot fully capture:
+
+- **Absolute maximum ratings** — operating limits the part cannot safely exceed
+- **Recommended operating conditions** — the ranges within which the part is guaranteed to perform to spec
+- **Package and footprint specifics** — land pattern dimensions, pin numbering, and mechanical drawings
+- **Lifecycle or qualification claims** — AEC-Q grades, RoHS status, or other certifications
+- **Tables and curves** — performance data too detailed or conditional to summarize well in extracted form
+
+If the datasheet link is wrong or the PDF is clearly unrelated to the part, file a report so the record can be corrected.
+
+## Series Navigation
+
+Some parts include series-aware navigation that lets you stay within a part family instead of starting a new search when a result is close but not quite right.
+
+Series navigation is especially useful when you want to:
+
+- Move to a nearby value or rating within the same family (e.g. a slightly higher voltage or lower resistance)
+- Compare package options across the same part series
+- Check known equivalent or neighboring variants without re-entering the query
+
+This is particularly helpful for passives and component families with predictable, regular variant steps — resistors, capacitors, inductors, and similar parts where the differences between variants follow a clear pattern.
+
+## Distributor Snapshot
+
+When Via has distributor context available for a part, you can use it to sanity-check sourcing before moving forward:
+
+- **Stock state** — whether the part appears to be in stock at one or more distributors
+- **MOQ** — the minimum order quantity required
+- **Order multiple** — the increment in which the part must be ordered above the MOQ
+- **Pricing tiers** — indicative price breaks at common quantity thresholds
+- **Freshness of the listing snapshot** — how recently the distributor data was captured
+
+<Warning>
+Do not treat the distributor snapshot as a purchasing system of record. It is a decision aid to help you evaluate a part within the design workflow — not live purchasing data. Verify availability and pricing directly with your distributor before placing an order.
+</Warning>
+
+## Design Calculators
+
+Some parts include datasheet-driven design calculators built directly into the part view. When present, use them to validate or estimate values that would otherwise require manual datasheet math — component values for a regulator feedback network, for example, or an RC time constant.
+
+These calculators are most useful as a first-pass check during component selection. They can save time on routine calculations and help surface obvious mismatches before deeper design review.
+
+## When to Report a Problem
+
+Report a part when you encounter any of the following:
+
+- **Wrong part identity** — the record clearly describes a different component than the part number suggests
+- **Obviously incorrect extracted values** — key specs are wrong in a way that would affect a design decision
+- **Wrong or missing datasheet** — the linked PDF is unrelated to the part, or no datasheet is linked at all
+- **Nonsense series navigation** — the series tool points to unrelated parts or obviously incorrect neighbors
+- **Misleading distributor details** — pricing, stock, or MOQ information that is wrong enough to influence a decision
+
+When you file a report, the feedback flow can attach the current part and search context automatically. Include the specific field that looks wrong and what you expected to see — that detail makes it much easier to diagnose and fix the underlying record.

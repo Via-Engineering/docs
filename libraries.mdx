@@ -1,0 +1,84 @@
+---
+title: "Build and Use Component Libraries in Via BOM"
+sidebarTitle: "Libraries"
+description: "Save preferred and approved components into reusable libraries so future searches prioritize parts your team already trusts."
+---
+
+Via BOM libraries let you keep a reusable set of preferred components outside any single project. When a library is active, search biases toward parts your team has already approved — so you reach for known-good components by default rather than rediscovering them from scratch on every new design.
+
+## What a Library Is For
+
+A library is the right place to store components that your team has already evaluated and wants to use again. Good candidates include:
+
+- Parts already approved by your team through qualification or review
+- Components preferred for sourcing or supply-chain reasons
+- Good defaults for recurring designs where you want consistency
+- Parts worth biasing search toward in future work
+
+Libraries are especially helpful for continuity across multiple projects. Instead of manually cloning old BOMs to carry forward your preferred parts, a library keeps that knowledge in one place and makes it available wherever you need it.
+
+## Create and Populate a Library
+
+<Steps>
+  <Step title="Find libraries in the sidebar">
+    Libraries live in the left sidebar alongside your projects and rulesets. You can access and manage them from there at any time.
+  </Step>
+  <Step title="Create a new library">
+    Create a new library and give it a name that reflects its scope — a product family, a component category, or a team-wide approved list.
+  </Step>
+  <Step title="Open the library">
+    Open the library to enter the editing context where you can add parts.
+  </Step>
+  <Step title="Search for parts you trust">
+    Use Via's search to find components you want to include. You can search normally — the same tools and filters apply.
+  </Step>
+  <Step title="Add parts to the active library version">
+    Add the parts you want into the active library version. Repeat this process as you discover or qualify new components over time.
+  </Step>
+</Steps>
+
+<Tip>
+  You can build a library gradually — it doesn't need to be complete before it starts being useful. Even a handful of preferred passives or commonly used support ICs will nudge search in the right direction immediately.
+</Tip>
+
+## Versioning
+
+Libraries are versioned so you can revise your preferred set without overwriting the previous working state. Each version is a snapshot of your preferred components at a point in time, and earlier versions remain accessible if you need to reference or roll back to them.
+
+Create a new library version when:
+
+- Your preferred manufacturer changes and you want to reflect that going forward
+- You want a cleaner shortlist for a new product line without affecting existing projects
+- You need to retire or replace parts without losing the record of what was there before
+
+Keeping versions intentional makes it easier to understand why a library looks the way it does — and easier to recover if a change doesn't work out.
+
+## How Libraries Affect Search
+
+When a library is active, Via biases search results toward:
+
+- Parts already present in the library
+- Close family matches from the same product line or series
+- Manufacturers you already prefer based on your library contents
+
+<Note>
+  Library bias is a helpful nudge, not an absolute filter. Via will still surface parts outside your library when they are a strong match for your query. If search steers too hard toward older choices, try searching outside that library context and compare the results — you may find better options that are worth adding to the library itself.
+</Note>
+
+## Good Use Cases
+
+Libraries work best when they map to a meaningful, stable scope. Some patterns that work well:
+
+- **House passives list** — keep a curated set of resistors, capacitors, and inductors in your preferred values and footprints so they are always the first options you see
+- **Vetted alternatives** — save approved second-source or substitute parts for supply-chain resilience, so you are never starting from scratch when a primary part goes out of stock
+- **Category shortlists** — maintain separate libraries for specific board families or product lines where the component choices are predictable and consistent
+
+## Notes on Library Bias
+
+<Note>
+  A few things worth keeping in mind as you use libraries:
+
+  - **Treat library bias as helpful guidance, not guaranteed policy** — Via uses your library as a signal, but always review search results before committing a part to a BOM.
+  - **Keep versions clean when preferences change materially** — creating a new version rather than editing in place makes it clear when and why your approved set shifted.
+  - **Report bad library-biased matches** if the app overfits to your saved set and starts returning outdated or poor-fit results — feedback helps improve how library context is applied.
+</Note>

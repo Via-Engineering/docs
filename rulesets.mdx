@@ -1,0 +1,109 @@
+---
+title: "Encode Supply-Chain Policy with Via BOM Rulesets"
+sidebarTitle: "Rulesets"
+description: "Create rulesets to encode cost, lifecycle, qualification, and supply-chain requirements so every search automatically reflects your team's component standards."
+---
+
+Rulesets tell Via BOM what "better" means for your team. Without a ruleset, search responds mainly to the query itself — the results reflect how closely a part matches your search terms. With an active ruleset, Via also weighs your ongoing preferences: avoiding risky lifecycle states, preferring stocked parts, requiring qualification certifications. That policy applies automatically on every search, so you don't have to re-state your requirements each time.
+
+## What Rulesets Change
+
+The shift a ruleset produces is from query-only ranking to policy-aware ranking. Without one, Via surfaces parts that match your keywords. With one, Via surfaces parts that match your keywords *and* align with your team's sourcing standards.
+
+Active rulesets can influence search to:
+
+- **Avoid risky lifecycle states** — deprioritize or exclude EOL, NRND, and other parts with uncertain supply futures
+- **Prefer stocked parts** — bias results toward components with confirmed distributor or manufacturer direct stock
+- **Require qualification or compliance constraints** — enforce certifications like AEC-Q200 or temperature range minimums before a part is considered
+- **Push cost within acceptable bounds** — apply cost pressure up or down without crossing the thresholds your procurement team sets
+- **Keep continuity with existing selections** — favor manufacturers or families you've already standardized on within a project or BOM
+
+## Common Rule Patterns
+
+Real rulesets are typically built from a combination of require, prefer, and avoid rules. Some representative examples:
+
+| Type | Examples |
+|------|----------|
+| **Require** | `AEC-Q200 certified`, `Temp range >= -40°C to +125°C` |
+| **Prefer** | `multi-source parts`, `manufacturer direct stock` |
+| **Avoid** | `single-source components`, `EOL or NRND` |
+
+The exact rule vocabulary can evolve as the product matures, but the core idea is stable: rulesets let you encode engineering and supply-chain intent once instead of retyping it in every search. Define it, attach it, and let Via apply it in the background.
+
+## Create and Version Rulesets
+
+Rulesets are versioned, and that versioning matters. Ranking policy changes over time — what made sense when a program launched may not reflect the reality six months later when lead times have shifted or a new qualification bar has been added.
+
+Create a new ruleset version when:
+
+- Procurement priorities have changed
+- A qualification bar has been raised or relaxed
+- You want to test a stricter or looser ranking policy before committing to it
+
+If you need temporary variations on the same base ruleset — for example, to trial a more aggressive lead-time preference — keep the underlying ruleset stable and use a separate configuration or profile where available. That way your policy history stays intact and auditable.
+
+## Where Rulesets Apply
+
+Rulesets are most helpful when they are active inside a project or alongside a library. In those contexts they can shape ranking automatically, rather than acting like a static note that someone has to remember to apply.
+
+The ideal flow is automatic: supply-chain or management users define policy once, and engineers search inside a project or BOM without having to manually select every rule. Via carries active project, BOM, library, and default ruleset context into search automatically — engineers can focus on electrical fit while sourcing, lifecycle, and compliance preferences shape the shortlist in the background.
+
+## Stakeholder Workflows
+
+<Tabs>
+  <Tab title="Supply Chain">
+    Supply chain owns the reusable sourcing policy that rulesets encode. That includes:
+
+    - **Approved vendors** — which distributors and manufacturers are cleared for procurement
+    - **Distributor preferences** — preferred channels and any channel exclusions
+    - **Stock and lead-time posture** — how much inventory buffer the program requires
+    - **Lifecycle risk** — thresholds for acceptable lifecycle states
+    - **MOQ limits** — minimum order quantity constraints that make a part practical to buy
+    - **Regional sourcing** — geographic restrictions or preferences that apply to the supply base
+
+    Supply chain creates and versions rulesets so that engineers working in any project automatically benefit from current sourcing policy — without having to ask for it every time.
+  </Tab>
+  <Tab title="Management">
+    Management uses rulesets to standardize component decisions across programs rather than leaving them to individual engineers on a search-by-search basis.
+
+    Your primary touchpoints are:
+
+    - **Coverage review** — confirming that all active projects have appropriate rulesets attached
+    - **Exception tracking** — understanding which searches or parts required overrides to standard policy
+    - **Policy drift** — identifying when individual projects have diverged from the organization's current sourcing standards
+
+    Creating new ruleset versions when policy changes — rather than silently editing existing ones — gives you an auditable record of how standards have evolved over time.
+  </Tab>
+  <Tab title="Engineering">
+    Engineers benefit most from rulesets when they are already attached by context. You shouldn't need to understand every supply-chain rule before running a search — the policy should work in the background.
+
+    What you should see in search results:
+
+    - **Concise signals** — short explanations like "boosted by approved vendor" or "needs exception: single-source" so you understand why a part ranked where it did
+    - **Surfaced constraints** — clear indication when a part is excluded or deprioritized by an active rule, rather than a silent omission
+
+    If a ruleset seems to be excluding parts that should clearly be valid candidates, flag it to your supply-chain team rather than working around it manually.
+  </Tab>
+</Tabs>
+
+## How to Use Rulesets Well
+
+<Note>
+**Best practices for ruleset authors:**
+
+- **Keep rules concrete enough to affect decisions.** Vague preferences ("good quality", "reliable supplier") don't translate into ranking signals. Specific criteria ("AEC-Q200 certified", "in stock at two or more distributors") do.
+- **Avoid mixing too many conflicting goals into one ruleset.** If cost-minimization and lifecycle-safety pull in opposite directions with no clear priority, the ranking signal becomes noise.
+- **Create new versions when policy changes.** Edit history away and you lose the ability to understand why a decision was made. Version instead.
+- **Prefer defaults and project/BOM attachment over manual selection.** The more automatic the attachment, the more consistently the policy applies — and the less it depends on individual engineers remembering to activate it.
+- **Compare search behavior before and after major rule changes.** Run a few representative queries against both versions before committing to the new policy.
+</Note>
+
+## Current Status
+
+<Note>
+Ruleset influence is useful today, but not yet perfect. Ranking can still require manual judgment, especially for ambiguous queries where the right part depends on context a ruleset can't fully capture.
+
+The key product directions are automatic attachment — so rulesets apply without manual steps — and result-level rule explanations, so you can see exactly which rules shaped a result's rank.
+
+If a ruleset obviously overconstrains results or misranks parts in a way that doesn't reflect your intent, report the query and what you expected instead. Those specific cases are the most useful feedback for improving ranking.
+</Note>

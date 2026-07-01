@@ -1,0 +1,59 @@
+---
+title: "Via BOM: AI Component Search for Hardware Engineers"
+sidebarTitle: "Introduction"
+description: "Via BOM reads datasheets end-to-end to help hardware engineers search, compare, and organize electronic components for PCB design."
+---
+
+Finding the right electronic component has always meant juggling distributor searches, half-populated databases, and stacks of PDFs. Via BOM changes that by reading every datasheet end-to-end — not just indexing a curated subset of fields — so you get the full picture on any part before you commit it to your BOM. Whether you're hunting for a specific part number or describing a requirement in plain English, Via BOM brings the answer back with the context you need to make a confident decision.
+
+## What Via BOM Does
+
+Via BOM is built around a single workflow: search for a part, inspect its details, and add it to your BOM. Every step of that workflow is AI-assisted.
+
+When you search, you can type anything: a part number like `INA228`, a spec fragment like `low noise 3.3V LDO`, or a full plain-language requirement like `overvoltage protection IC for a 12V automotive rail`. Via BOM interprets your query, applies any active project context, and returns a ranked shortlist. Each result comes with AI-generated tradeoff explanations — not just a score, but a plain-English summary of why one part outranks another for your specific constraints.
+
+When you open a part, you see specs extracted directly from the datasheet: electrical parameters, package information, operating conditions, and more. Via BOM links to the source datasheet and surfaces nearby series variants so you can evaluate alternatives without starting a new search. Once you've found the right part, you add it to your project BOM in a single action.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Search" icon="magnifying-glass" href="/search">
+    Search by part number, spec value, or plain language. Via BOM interprets both structured clues and free-text intent in the same query box.
+  </Card>
+  <Card title="Part Details" icon="file-lines" href="/part-details">
+    View specs extracted end-to-end from datasheets, follow source links, and browse series alternatives — all from the part details view.
+  </Card>
+  <Card title="Projects & BOMs" icon="folder-open" href="/projects-and-boms">
+    Organize selected parts into projects with full revision history, and import or export BOMs in CSV, XLSX, JSON, and YAML formats.
+  </Card>
+  <Card title="Libraries" icon="bookmark" href="/libraries">
+    Save your preferred and approved parts so Via BOM prioritizes them in future searches across your team's workspace.
+  </Card>
+  <Card title="Rulesets" icon="sliders" href="/rulesets">
+    Encode supply-chain requirements, qualification standards, cost targets, and ranking preferences that apply automatically to every search.
+  </Card>
+  <Card title="MCP Integration" icon="plug" href="/mcp">
+    Connect Via BOM to Claude, ChatGPT, and Gemini via the Model Context Protocol endpoint at `https://api.viabom.com/mcp`.
+  </Card>
+</CardGroup>
+
+## Who It's For
+
+Via BOM is built for hardware engineers and PCB designers who need to move from "find the right part" to "commit it to the BOM" without bouncing between a distributor site, a datasheet PDF, and a spreadsheet. It's equally useful for engineering leads who want to encode preferred parts and supply-chain rules once and have those preferences enforced across an entire team's searches. Procurement and supply chain roles benefit from the shared workspace model, which keeps approved vendor lists, lifecycle constraints, and cost targets in sync across every project the team works on.
+
+## How to Navigate These Docs
+
+If you're new to Via BOM, start with [Getting Started](/getting-started). It walks you through signing in, choosing a workspace, running your first search, and creating your first project — the full onboarding flow in one place.
+
+From there, the core feature guides go deeper on each part of the product:
+
+- [Search](/search) — how query interpretation, filters, and ranking work
+- [Part Details](/part-details) — how to read extracted specs and evaluate candidates
+- [Projects & BOMs](/projects-and-boms) — project structure, BOM import and export
+- [Libraries](/libraries) — saving and reusing preferred parts
+- [Rulesets](/rulesets) — encoding and applying ranking preferences
+- [MCP Integration](/mcp) — connecting Via BOM to your AI assistant of choice
+
+<Note>
+  Via BOM is in active development. Search coverage, extracted data, and ranking continue to improve. Always confirm final component selections against the part page and datasheet.
+</Note>

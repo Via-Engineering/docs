@@ -1,0 +1,103 @@
+---
+title: "Get Started with Via BOM"
+sidebarTitle: "Quick Start"
+description: "Sign in to Via BOM, set up your workspace, run your first component search, and create your first project in a few minutes."
+---
+
+Via BOM is designed for hardware engineers who need to move from finding the right part to using it in a real BOM without juggling multiple tools. This guide walks you through signing in, picking a workspace, running a search, and creating your first project.
+
+<Note>
+  **Before you start, make sure you have:**
+
+  - An active Via account and access to the correct workspace.
+  - An awareness that search coverage, extracted data, and ranking continue to improve — confirm final selections on the part page and datasheet when the decision matters.
+</Note>
+
+<Steps>
+  <Step title="Sign In">
+    Use the login flow from the app home page. After sign-in, Via loads your account and your available workspaces.
+
+    If your expected workspace is missing, check that you are using the right email address and ask your team admin for an invitation.
+  </Step>
+
+  <Step title="Pick Your Workspace">
+    Open the workspace switcher in the left sidebar. Your active workspace controls which shared projects, libraries, and rulesets you see.
+
+    From the switcher you can:
+
+    - Switch between organizations
+    - Create a new workspace
+    - Join an existing workspace
+    - Open workspace settings to manage branding, domains, or members
+
+    If something seems missing, check the active workspace first — scope matters.
+  </Step>
+
+  <Step title="Run Your First Search">
+    The fastest way to get oriented is to search for a real part or requirement. Try any of these:
+
+    ```
+    100nF 0402 capacitor
+    INA228 current sense monitor
+    low noise 3.3V LDO
+    ```
+
+    Via supports part numbers, package sizes, values, and plain-language requirements in the same search box.
+
+    <Tip>
+      If you already know the project you're working on, open it first and search from there. Via can then use your current BOM and active ruleset as context to improve results.
+    </Tip>
+  </Step>
+
+  <Step title="Inspect a Part">
+    Before adding a part to a project, open its detail page to check:
+
+    - Extracted specs from the datasheet
+    - Linked datasheet (verify it's readable)
+    - Series variants nearby in the product family
+    - Distributor details and availability
+    - Any design calculators Via has attached to the part
+
+    If the data looks wrong, report it directly from the product so the Via team can review the exact context.
+  </Step>
+
+  <Step title="Create Your First Project">
+    From the signed-in home screen, select **Create Project**. A project is where Via keeps your selected parts, revisions, and BOMs together.
+
+    Inside a project you can:
+
+    - Add parts from search results
+    - Import existing BOM files
+    - Create new revisions
+    - Manage multiple BOMs within a revision
+    - Export the current BOM when you need to hand it off
+
+    If you already have a starting spreadsheet, go straight to the BOM import flow instead.
+  </Step>
+
+  <Step title="Save Reusable Preferences">
+    As you settle on preferred parts and constraints, capture them so they influence future work automatically:
+
+    - Use **Libraries** to keep preferred components close at hand.
+    - Use **Rulesets** to encode supply-chain, lifecycle, cost, or qualification preferences that should influence ranking automatically.
+
+    Both are versioned, so you can evolve them without losing prior working states.
+  </Step>
+</Steps>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Search" icon="magnifying-glass" href="/search">
+    Learn how query interpretation, filters, and ranking work.
+  </Card>
+  <Card title="Projects & BOMs" icon="folder-open" href="/projects-and-boms">
+    Project structure, import, and export behavior.
+  </Card>
+  <Card title="Libraries" icon="bookmark" href="/libraries">
+    Save and reuse preferred components.
+  </Card>
+  <Card title="Rulesets" icon="shield-check" href="/rulesets">
+    Encode supply-chain and qualification preferences.
+  </Card>
+</CardGroup>

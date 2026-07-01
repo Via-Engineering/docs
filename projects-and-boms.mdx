@@ -1,0 +1,105 @@
+---
+title: "Manage Projects and BOMs in Via BOM"
+sidebarTitle: "Projects & BOMs"
+description: "Organize your component selections into projects, revisions, and BOMs. Import existing BOM files, add parts from search, and export your bill of materials."
+---
+
+Projects are where Via BOM moves beyond search and becomes part of your real design workflow. A project holds your selected parts, revision history, and bills of materials — keeping everything together as your design evolves. Whether you are starting fresh or importing an existing spreadsheet, projects give your component decisions a structured home.
+
+## Project Structure
+
+Via BOM organizes work into three levels:
+
+- **Project** — the overall design or effort you are working on
+- **Revision** — a version of that project as the design advances
+- **BOM** — a specific bill of materials within a revision
+
+This split lets you keep experiments, alternates, and evolving revisions without losing the history of what changed. You can have multiple BOMs inside a single revision and multiple revisions inside a project, so your decisions accumulate rather than get overwritten.
+
+## Create a Project
+
+<Steps>
+  <Step title="Open the home screen">
+    From the signed-in home screen, click **Create Project** to get started.
+  </Step>
+  <Step title="Name the project">
+    Give the project a clear, recognizable name that reflects the design or effort it represents.
+  </Step>
+  <Step title="Add parts or import a file">
+    Once inside the project, you can add parts directly from search or import an existing BOM file to seed your parts list.
+  </Step>
+  <Step title="Let Via set up the initial structure">
+    For brand-new projects, Via sets up the initial revision and BOM for you automatically, so you can start adding parts right away.
+  </Step>
+</Steps>
+
+## Add Parts from Search
+
+The normal loop for building up a BOM inside a project is:
+
+1. Open the project
+2. Launch search inside that project
+3. Inspect candidates and review their specs
+4. Add the chosen part into the active BOM
+
+<Tip>
+  Searching from inside a project matters because Via uses the active BOM and ruleset as context for ranking — helping you find parts that fit the rest of your design. The more parts you have in your BOM, the more context Via has to work with.
+</Tip>
+
+## Import BOM Files
+
+Via BOM supports parsing for the most common BOM file formats:
+
+```
+csv
+xlsx
+json
+yaml
+```
+
+The import flow parses the file, previews the result, and lets you review the incoming rows before applying them. Nothing is committed until you confirm.
+
+Use import when you want to:
+
+- Seed a new project from an existing spreadsheet
+- Merge incoming changes into the active BOM
+- Compare parsed rows against what you have before accepting them
+
+## Revisions vs BOMs
+
+Knowing when to use a new revision versus a new BOM keeps your history clean and your decisions traceable.
+
+- Create a new **revision** when the design itself is advancing — a new hardware spin, a significant architectural change, or a milestone you want to preserve distinctly.
+- Create a new **BOM** within the same revision when you want alternate sourcing, variant-specific selections, or a separate working parts list without changing the higher-level revision identity.
+
+If you plan to compare multiple options side by side, create the split early so the history stays clear. It is much easier to merge or discard a BOM you no longer need than to reconstruct the history of decisions made in a single overwritten list.
+
+## Export
+
+When you are ready to hand off your parts list to another tool or a teammate, export the active BOM. Export reflects the currently selected BOM, not every BOM in the project — so confirm you have the right BOM active before exporting.
+
+## How Project Context Affects Search
+
+When you run a search inside a project, Via can take cues from the project to improve ranking. Context it uses includes:
+
+- Parts already in the BOM
+- Preferred manufacturers already in use across your selections
+- Active rulesets and profiles attached to the project
+- The broader project direction implied by your existing component choices
+
+This is useful when you want continuity and want new parts to fit naturally alongside what you have already selected.
+
+<Tip>
+  If you want a fresh, context-free search, confirm you're not carrying over project context that has become too restrictive. Searching outside the project or starting from a clean ruleset can help you surface options you might otherwise miss.
+</Tip>
+
+## Good Habits
+
+<Note>
+  A few habits that keep projects manageable over time:
+
+  - **Keep BOM names specific** when you are comparing alternatives — vague names make it hard to remember what each BOM represents later.
+  - **Review imports before applying them** — the preview step exists for a reason; a quick scan catches mapping errors before they land in your parts list.
+  - **Verify sensitive values on the part page** before locking parts into a BOM — extracted specs are helpful but always confirm critical parameters from the datasheet.
+  - **Report parsing mistakes** instead of silently working around them — if Via misreads your file format, flagging it helps improve the importer for everyone.
+</Note>

@@ -1,0 +1,179 @@
+---
+title: "Connect Via BOM to Claude, ChatGPT, and Gemini via MCP"
+sidebarTitle: "MCP Integration"
+description: "Use Via BOM's MCP server to search components, edit BOMs, and manage libraries directly from Claude, ChatGPT, and Gemini AI assistants."
+---
+
+Via BOM exposes a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server so AI assistants like Claude, ChatGPT, and Gemini can search components, look up part details, and work with your projects, libraries, and rulesets on your behalf. Sign-in uses the same Via account you already use in the app, and every tool call runs with the same workspace access you already have. The MCP endpoint is `https://api.viabom.com/mcp`.
+
+## What You Can Do via MCP
+
+<CardGroup cols={2}>
+  <Card title="Search Components" icon="magnifying-glass">
+    Search for parts with full project, BOM, library, and ruleset context applied automatically.
+  </Card>
+  <Card title="Open Component Details" icon="file-lines">
+    Pull up specs, datasheet metadata, and distributor pricing for any component.
+  </Card>
+  <Card title="Read and Edit Projects & BOMs" icon="folder-open">
+    View, create, and update your projects and bill-of-materials line items.
+  </Card>
+  <Card title="Read and Edit Libraries" icon="bookmark">
+    Browse and modify your component libraries directly from the assistant.
+  </Card>
+  <Card title="Read and Edit Rulesets" icon="shield-check">
+    Manage rulesets and named configuration variants without leaving your AI chat.
+  </Card>
+</CardGroup>
+
+## Before You Connect
+
+<Note>
+  Make sure all of the following are true before adding Via to an MCP-capable client:
+
+  - Your Via account can sign in normally in the browser.
+  - The client supports remote MCP over HTTP or streaming HTTP.
+  - Pop-ups are allowed in the client app so the sign-in window can open.
+  - You are using the exact URL `https://api.viabom.com/mcp` with no extra path segments.
+  - You do **not** need an API key — the server uses OAuth and prompts you to sign in during connector setup.
+</Note>
+
+## Client Setup
+
+<Tabs>
+  <Tab title="Claude">
+    ### Claude Web or Claude Desktop
+
+    Use Claude's built-in custom connector flow for Via's remote MCP server. Do not put a remote Via URL in `claude_desktop_config.json` — that file is for Claude Desktop's local MCP mechanism and will not work here.
+
+    <Steps>
+      <Step title="Open Connectors">
+        Open **Customize → Connectors** in Claude.
+      </Step>
+      <Step title="Add a custom connector">
+        Click **+** and choose **Add custom connector**.
+      </Step>
+      <Step title="Name and paste the URL">
+        Name it `Via` and paste `https://api.viabom.com/mcp` into the URL field.
+      </Step>
+      <Step title="Leave OAuth credentials blank">
+        Leave the OAuth client credentials fields blank unless your Claude workspace specifically asks you to override them.
+      </Step>
+      <Step title="Connect and sign in">
+        Click **Add**, then **Connect**, and finish the Via sign-in flow in your browser.
+      </Step>
+      <Step title="Enable for a chat">
+        Enable the connector for a conversation from the **+** menu → **Connectors**.
+      </Step>
+    </Steps>
+
+    <Note>
+      On Team and Enterprise plans, an owner must add the custom connector first. Each user still connects their own Via account afterward.
+    </Note>
+
+    ### Claude Code
+
+    Add Via as a remote HTTP server with one command:
+
+    ```bash
+    claude mcp add --transport http via-bom https://api.viabom.com/mcp
+    ```
+
+    Then run `/mcp` inside Claude Code and complete the browser sign-in when prompted.
+  </Tab>
+
+  <Tab title="ChatGPT">
+    ChatGPT refers to these integrations as **apps** rather than connectors.
+
+    <Steps>
+      <Step title="Open Advanced settings">
+        In ChatGPT web, open **Settings → Apps** (or **Apps & Connectors**) → **Advanced settings**.
+      </Step>
+      <Step title="Turn on Developer mode">
+        Enable **Developer mode**.
+      </Step>
+      <Step title="Create an app">
+        Click **Create app**.
+      </Step>
+      <Step title="Enter the Via MCP URL">
+        Enter `https://api.viabom.com/mcp` as the server URL.
+      </Step>
+      <Step title="Sign in to Via">
+        Finish the Via sign-in flow when ChatGPT opens the browser window.
+      </Step>
+      <Step title="Enable in a conversation">
+        The Via app appears under **Drafts**. Enable it in a conversation from the **+** menu or the Developer Mode tool picker.
+      </Step>
+    </Steps>
+
+    <Note>
+      - ChatGPT only supports remote MCP servers — `localhost` URLs will not work here.
+      - If ChatGPT offers optional OAuth client credentials, leave them blank for Via's normal sign-in flow.
+      - Availability depends on your ChatGPT plan and, for workspace accounts, your admin settings.
+    </Note>
+  </Tab>
+
+  <Tab title="Gemini">
+    Gemini CLI is the official Google-documented path for adding remote MCP servers.
+
+    <Steps>
+      <Step title="Install or update Gemini CLI">
+        Make sure you have the latest version of Gemini CLI installed.
+      </Step>
+      <Step title="Add Via as a remote server">
+        Run the following command:
+
+        ```bash
+        gemini mcp add --transport http via https://api.viabom.com/mcp
+        ```
+      </Step>
+      <Step title="Sign in to Via">
+        Complete the Via sign-in flow if Gemini opens a browser for OAuth.
+      </Step>
+      <Step title="Confirm the connection">
+        Run `/mcp list` to verify the server is connected.
+      </Step>
+      <Step title="Try a prompt">
+        Test the integration with a search, for example: `find a 1% 10k 0402 resistor`.
+      </Step>
+    </Steps>
+
+    <Note>
+      As of April 2026, no first-party Google documentation had confirmed support for adding arbitrary remote MCP servers via the Gemini web app. Gemini CLI is the recommended path.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Sign-In and Permissions
+
+The assistant uses the same projects, libraries, rulesets, and search context you already have in Via — no additional configuration is needed once you connect. You may be asked to sign in again if the client needs to refresh access. You can revoke a client at any time from your Via account settings or by removing the connector in the assistant app.
+
+## Troubleshooting
+
+<Accordion title="Server error immediately during setup">
+  This usually means the service is temporarily unavailable. Check the [status page](https://status.viabom.com) and try again in a moment.
+</Accordion>
+
+<Accordion title="Claude Desktop says the server is missing">
+  For Via's remote MCP server, use Claude's **Customize → Connectors** flow or Claude Code's `claude mcp add --transport http ...` command instead of editing `claude_desktop_config.json`. That file is only for Claude Desktop's local MCP mechanism and does not support remote servers.
+</Accordion>
+
+<Accordion title="Sign-in window does not open">
+  Allow pop-ups for the assistant app in your browser settings, then try adding the connector again.
+</Accordion>
+
+<Accordion title="Sign-in page says application was not found">
+  The MCP client likely cached a stale OAuth client registration. In Claude Code or other `mcp-remote` clients, remove the Via entry from `~/.mcp-auth/mcp-remote-*/` and retry. Alternatively, remove and re-add the Via connector so the client performs a fresh Dynamic Client Registration.
+</Accordion>
+
+<Accordion title="ChatGPT or Claude cannot connect from a private network">
+  Remote connector flows require a public HTTPS MCP endpoint. They do not work with VPN-only or `localhost` URLs. Make sure your network allows outbound access to `https://api.viabom.com/mcp`.
+</Accordion>
+
+<Accordion title="Tools appear but return empty results">
+  Confirm you are signed in to the correct Via workspace. If you have access to multiple workspaces, check that the active one contains the projects or libraries you expect.
+</Accordion>
+
+<Accordion title="Client cannot discover the server">
+  The URL must be exactly `https://api.viabom.com/mcp` with no trailing slash or additional path segments. Double-check what you entered in the connector configuration.
+</Accordion>
